@@ -1,21 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package banksim;
+
 import java.util.Scanner;
+
 /**
  *
- * @author Richard
+ * @author richard.eaton
  */
-public class BankSim {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        CircleQueue<CustomerItem> Queue = new CircleQueue<CustomerItem>();
+public class AllRandoms {
         int DepLow = 0;
         int DepHigh = 0;
         int WitLow = 0;
@@ -23,13 +15,11 @@ public class BankSim {
         int TransLow = 0;
         int TransHigh = 0;
         
+    public void roller(){
+     
         Scanner input = new Scanner(System.in);
-        DepLow = input.nextInt();
-        
-             
-        
-        System.out.println("Welcome to the bank line simulation!");   
-        System.out.println("Welcome to the bank line simulation!");
+     
+
         System.out.println("We must first begin by establishing the low"
                 + "and high limits of each transaction type.");
         
@@ -56,17 +46,6 @@ public class BankSim {
         System.out.println("What is the most amount of time a "
                 + "money transfer takes?");
         TransHigh = input.nextInt();
-        
-        //System.out.println("Please enter the type of transaction");
-        
-        String entry;
-        entry = input.nextLine();
-        CustomerItem thing = new CustomerItem();
-        thing.TransType = entry;
-        Queue.enqueue(thing);
-        
-        
-        System.out.println(Queue.size());
-        System.out.println(Queue.toString());
-    }
+}
+
 }
