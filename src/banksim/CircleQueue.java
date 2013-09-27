@@ -8,6 +8,8 @@ package banksim;
 public class CircleQueue<T> implements QueueADT<T> {
 
     private final static int DEFAULT_CAPACITY = 100;
+    //public int front;
+    //public int rear;
     private int front; 
     private int rear;
     private int count;

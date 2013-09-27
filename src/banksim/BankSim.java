@@ -70,12 +70,12 @@ public class BankSim {
                 TellerWindow.get(i).TimeSpent++;
             }
             
-            int f = Random.Queue.front;
+            //int f = Random.Queue.front;
             
             //Count up everyone still waiting in line
-            for(int i=Random.Queue.front; i<Random.Queue.rear; i++){
-                int f = Random.Queue.front;
-                //item++?
+            for(int i=Random.Queue.front; i!=Random.Queue.rear; i++){
+                Random.Queue.front.TimeSpent++;
+                
             }    
             }
             
