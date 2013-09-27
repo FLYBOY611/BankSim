@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package banksim;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -17,7 +18,10 @@ public class BankSim {
         
         //CircleQueue<CustomerItem> Queue = new CircleQueue<CustomerItem>();
         AllRandoms Random = new AllRandoms();
+        ArrayList<CustomerItem> TellerWindow = new ArrayList<CustomerItem>();
         Scanner input = new Scanner(System.in);
+        int SimLength = 0;
+        
         
         System.out.println("Welcome to the bank line simulation!"); 
         
@@ -32,9 +36,52 @@ public class BankSim {
                 Random.Queue.toString());
         
        //Now we need to start the simulation....
+        System.out.println("One last piece of data before we "
+                + "start the simulation!");
+        System.out.println("How long would you like the simulation to run?");
+        SimLength = input.nextInt();
+        
         System.out.println("Running the simulation....");
+        int TellerOpen = Random.TellerNum;
+        
+        //START OF THE SIMULATION
+        while(0 < SimLength){
+   
+            //If there's an open teller 
+            //put the customer in the teller window ArrayList
+            for(int i=0; i<TellerOpen; i++){
+                TellerWindow.add(Random.Queue.dequeue());           
+                TellerOpen--;
+            }
+            
+            //Remove everyone who is done
+            for(int i=0; i<TellerWindow.size(); i++){       
+                if(TellerWindow.get(i).TimeNeeded == 0){
+                    System.out.println("Took them " + 
+                            TellerWindow.get(i).TimeSpent);
+                    TellerWindow.remove(i);
+                    i=0;
+                }
+            }
+            
+            //Countdown everyone at a teller    
+            for(int i=0; i<TellerWindow.size(); i++){
+                TellerWindow.get(i).TimeNeeded--;
+                TellerWindow.get(i).TimeSpent++;
+            }
+            
+            int f = Random.Queue.front;
+            
+            //Count up everyone still waiting in line
+            for(int i=Random.Queue.front; i<Random.Queue.rear; i++){
+                int f = Random.Queue.front;
+                //item++?
+            }    
+            }
+            
+        }
     }
-}
+
 
 
 

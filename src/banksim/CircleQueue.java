@@ -37,6 +37,7 @@ public class CircleQueue<T> implements QueueADT<T> {
         count++;
     }
     
+    //Removes and returns the front item on the queue
     public T dequeue() /* throws EmptyCollectionException */ {
         if (isEmpty()){
             //throw new EmptyCollectionException("queue");
@@ -91,6 +92,7 @@ public class CircleQueue<T> implements QueueADT<T> {
         queue = larger;
     }
     
+    //Prints out the queue
     public String toString(){
         String answer = "";
         int scan = front;
@@ -102,4 +104,13 @@ public class CircleQueue<T> implements QueueADT<T> {
         
         return answer;
     }
+    /*
+    public void addWaitTime(){
+        int scan = front;
+
+		while (scan != rear) {
+			queue[scan].TimeSpent++;
+			scan = (scan+1) % queue.length;
+		}
+    } */
 }
