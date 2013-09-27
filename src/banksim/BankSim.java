@@ -15,7 +15,31 @@ public class BankSim {
      */
     public static void main(String[] args) {
         
-        CircleQueue<CustomerItem> Queue = new CircleQueue<CustomerItem>();
+        //CircleQueue<CustomerItem> Queue = new CircleQueue<CustomerItem>();
+        AllRandoms Random = new AllRandoms();
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Welcome to the bank line simulation!"); 
+        
+        //Set the bounds of the transactions
+        Random.SetBounds();
+        //Generate the initial customers
+        Random.GenerateCustomer();
+           
+        
+        System.out.println("The queue size is " + Random.Queue.size());
+        System.out.println("The currect customers in line are \n" +
+                Random.Queue.toString());
+        
+       //Now we need to start the simulation....
+        System.out.println("Running the simulation....");
+    }
+}
+
+
+
+
+/*
         int DepLow = 0;
         int DepHigh = 0;
         int WitLow = 0;
@@ -23,12 +47,12 @@ public class BankSim {
         int TransLow = 0;
         int TransHigh = 0;
         
-        Scanner input = new Scanner(System.in);
+        
         DepLow = input.nextInt();
         
              
         
-        System.out.println("Welcome to the bank line simulation!");   
+          
         System.out.println("Welcome to the bank line simulation!");
         System.out.println("We must first begin by establishing the low"
                 + "and high limits of each transaction type.");
@@ -56,17 +80,9 @@ public class BankSim {
         System.out.println("What is the most amount of time a "
                 + "money transfer takes?");
         TransHigh = input.nextInt();
-        
+        */
+        //System.out.println("Deposit high bound is " + Random.DepHigh);
         //System.out.println("Please enter the type of transaction");
         
-        String entry;
-        entry = input.nextLine();
-        CustomerItem thing = new CustomerItem();
-        thing.TransType = entry;
-        Queue.enqueue(thing);
-        
-        
-        System.out.println(Queue.size());
-        System.out.println(Queue.toString());
-    }
-}
+        //String entry;
+        //entry = input.nextLine();

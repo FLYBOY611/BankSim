@@ -11,9 +11,10 @@ package banksim;
 public class CustomerItem {
     
     public String TransType;
+    public int TimeNeeded;
     public int TimeSpent;
     
     public String toString(){
-        return TransType + " " + TimeSpent;
+        return TransType + " " + TimeNeeded;
     }
 }
