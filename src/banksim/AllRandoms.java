@@ -83,6 +83,8 @@ public class AllRandoms {
                      thing.TransType = "Deposit";
                      thing.TimeNeeded = DepLow + (int)(Math.random() * 
                           ((DepHigh - DepLow) + 1));
+                     thing.OrigTimeNeeded = thing.TimeNeeded;
+                     thing.StartTime = 0;
                      Queue.enqueue(thing);
                      
                 }
@@ -90,6 +92,8 @@ public class AllRandoms {
                      thing.TransType = "Withdraw";
                      thing.TimeNeeded = WitLow + (int)(Math.random() * 
                           ((WitHigh - WitLow) + 1));
+                     thing.OrigTimeNeeded = thing.TimeNeeded;
+                     thing.StartTime = 0;
                      Queue.enqueue(thing);
                      
                 }
@@ -97,6 +101,8 @@ public class AllRandoms {
                      thing.TransType = "Transfer";
                      thing.TimeNeeded = TransLow + (int)(Math.random() * 
                           ((TransHigh - TransLow) + 1));
+                     thing.OrigTimeNeeded = thing.TimeNeeded;
+                     thing.StartTime = 0;
                      Queue.enqueue(thing);
                      
                 }

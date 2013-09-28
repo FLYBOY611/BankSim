@@ -19,6 +19,7 @@ public class BankSim {
         //CircleQueue<CustomerItem> Queue = new CircleQueue<CustomerItem>();
         AllRandoms Random = new AllRandoms();
         ArrayList<CustomerItem> TellerWindow = new ArrayList<CustomerItem>();
+        ArrayList<Integer> FinishedTime = new ArrayList<Integer>();
         Scanner input = new Scanner(System.in);
         int SimLength = 0;
         
@@ -44,8 +45,11 @@ public class BankSim {
         System.out.println("Running the simulation....");
         int TellerOpen = Random.TellerNum;
         
+        System.out.println("There are this many tellers " + TellerOpen);
+        int x = 0;
+        
         //START OF THE SIMULATION
-        while(0 < SimLength){
+        while(x < SimLength){
    
             //If there's an open teller 
             //put the customer in the teller window ArrayList
@@ -53,30 +57,37 @@ public class BankSim {
                 TellerWindow.add(Random.Queue.dequeue());           
                 TellerOpen--;
             }
-            
-            //Remove everyone who is done
-            for(int i=0; i<TellerWindow.size(); i++){       
-                if(TellerWindow.get(i).TimeNeeded == 0){
-                    System.out.println("Took them " + 
-                            TellerWindow.get(i).TimeSpent);
-                    TellerWindow.remove(i);
-                    i=0;
+            //Remove customers who are done
+            if(TellerWindow.isEmpty() == false){               
+                for(int i=0; i<TellerWindow.size(); i++){       
+                    if(TellerWindow.isEmpty() == false && 
+                            TellerWindow.get(i).TimeNeeded == 0){
+                        System.out.println("Done with " + 
+                                TellerWindow.get(i).TransType +
+                                " of length " +
+                                TellerWindow.get(i).OrigTimeNeeded + 
+                                " at time " + x);
+                        
+                        FinishedTime.add(x-TellerWindow.get(i).StartTime);
+                        TellerWindow.remove(i);
+                        i--;
+                        TellerOpen++;
+                    }
                 }
             }
             
-            //Countdown everyone at a teller    
-            for(int i=0; i<TellerWindow.size(); i++){
-                TellerWindow.get(i).TimeNeeded--;
-                TellerWindow.get(i).TimeSpent++;
+            //Countdown everyone at a teller
+            if(TellerWindow.isEmpty() == false){                   
+                for(int i=0; i<TellerWindow.size(); i++){
+                    TellerWindow.get(i).TimeNeeded--;
+                    TellerWindow.get(i).TimeSpent++;
+                }
             }
+            //Record the time they left the queue
+            //Record the time they entered the queue
+            //Compare against SimLength
             
-            //int f = Random.Queue.front;
-            
-            //Count up everyone still waiting in line
-            for(int i=Random.Queue.front; i!=Random.Queue.rear; i++){
-                Random.Queue.front.TimeSpent++;
-                
-            }    
+            x++;
             }
             
         }
