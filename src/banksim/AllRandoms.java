@@ -30,11 +30,11 @@ public class AllRandoms {
 
         System.out.println("We must first begin by establishing the low"
                 + "and high limits of each transaction type.");
-        System.out.println("Do you want to use the default values"
+        System.out.println("Do you want to use the default values "
                 + "for the bounds on transactions?  y/n");
         entry = input.nextLine();
         
-        if(entry == "n"){
+        if(entry.equals("n")){
         
         System.out.println("What is the least amount of time a "
                 + "deposit takes?");
@@ -67,6 +67,7 @@ public class AllRandoms {
         System.out.println("How many customers will be starting in line?");
         CustomerNum = input.nextInt();
 }
+    //Change this to take CustomerNum and StartTime as arguments
     public void GenerateCustomer(){
         
         

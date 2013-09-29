@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package banksim;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -45,51 +42,72 @@ public class BankSim {
         System.out.println("Running the simulation....");
         int TellerOpen = Random.TellerNum;
         
-        System.out.println("There are this many tellers " + TellerOpen);
+        
         int x = 0;
         
         //START OF THE SIMULATION
         while(x < SimLength){
    
-            //If there's an open teller 
-            //put the customer in the teller window ArrayList
-            for(int i=0; i<TellerOpen; i++){
-                TellerWindow.add(Random.Queue.dequeue());           
-                TellerOpen--;
+          //If there's an open teller, and the queue isn't empty 
+          //put the customer in the teller window ArrayList
+          if(Random.Queue.isEmpty() == false){  
+            for(int j=0; j<TellerOpen; TellerOpen--){
+                System.out.println("Customer " + 
+                                Random.Queue.first().TransType +
+                                " of length " +
+                                Random.Queue.first().OrigTimeNeeded + 
+                                " is now being served at time " + x);
+                TellerWindow.add(Random.Queue.dequeue());
+                
             }
-            //Remove customers who are done
+          }
+            //Remove customers who are done and open that teller
             if(TellerWindow.isEmpty() == false){               
                 for(int i=0; i<TellerWindow.size(); i++){       
-                    if(TellerWindow.isEmpty() == false && 
-                            TellerWindow.get(i).TimeNeeded == 0){
-                        System.out.println("Done with " + 
+                    CustomerItem person = TellerWindow.get(i);
+                    if(person.TimeNeeded == 0){
+                        int TimeSpent = x-TellerWindow.get(i).StartTime;
+                        System.out.println("Customer " + 
                                 TellerWindow.get(i).TransType +
                                 " of length " +
                                 TellerWindow.get(i).OrigTimeNeeded + 
-                                " at time " + x);
-                        
-                        FinishedTime.add(x-TellerWindow.get(i).StartTime);
-                        TellerWindow.remove(i);
-                        i--;
+                                " is now done at time " + x +
+                                ", it took " + 
+                                TimeSpent + " minutes");
+                        //Record how much time it took them
+                        FinishedTime.add(TimeSpent);
+                        TellerWindow.remove(i).TimeNeeded = 0;
+                        i=0;
                         TellerOpen++;
                     }
                 }
             }
-            
+                      
             //Countdown everyone at a teller
             if(TellerWindow.isEmpty() == false){                   
                 for(int i=0; i<TellerWindow.size(); i++){
-                    TellerWindow.get(i).TimeNeeded--;
-                    TellerWindow.get(i).TimeSpent++;
+                    TellerWindow.get(i).TimeNeeded--;                 
                 }
             }
-            //Record the time they left the queue
-            //Record the time they entered the queue
-            //Compare against SimLength
+
             
             x++;
             }
+            System.out.println("THE SIMULATION IS DONE \n");
             
+            //Calculate the average
+            int FinalAverage = 0;
+            for(int z=0; z<FinishedTime.size(); z++){
+                FinalAverage += FinishedTime.get(z);
+            }
+            FinalAverage = FinalAverage/FinishedTime.size();
+            System.out.println("The average time to get served was: " +
+                    FinalAverage);
+            System.out.println("Total customers served: " + 
+                    FinishedTime.size());
+            int CustomersLeft = Random.Queue.size() + TellerWindow.size();
+            System.out.println("Customers left unserved: " +
+                    CustomersLeft);
         }
     }
 
@@ -144,3 +162,25 @@ public class BankSim {
         
         //String entry;
         //entry = input.nextLine();
+
+
+
+/*//Remove customers who are done
+            if(TellerWindow.isEmpty() == false){               
+                for(int i=0; i<TellerWindow.size(); i++){       
+                    CustomerItem person = TellerWindow.get(i);
+                    if(TellerWindow.isEmpty() == false && 
+                            TellerWindow.get(i).TimeNeeded == 0){
+                        System.out.println("Done with " + 
+                                TellerWindow.get(i).TransType +
+                                " of length " +
+                                TellerWindow.get(i).OrigTimeNeeded + 
+                                " at time " + x);
+                        
+                        FinishedTime.add(x-TellerWindow.get(i).StartTime);
+                        TellerWindow.remove(i);
+                        i=0;
+                        TellerOpen++;
+                    }
+                }
+            } */
