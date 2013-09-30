@@ -90,13 +90,13 @@ public class BankSim {
                     TellerWindow.get(i).TimeNeeded--;
                 }
             }
-           /* 
+            
             //A new walkin customer chance
             int CustomerChance = 1 + (int)(Math.random() * ((10 - 1) + 1));
             if(CustomerChance == 1){
                 Random.GenerateCustomer(1, x);
                 System.out.println("A NEW CUSTOMER HAS ENTERED!");
-            } */
+            } 
 
             
             x++;
@@ -119,63 +119,3 @@ public class BankSim {
         }
     }
 
-
-
-
-
-/*
-int DepLow = 0;
-int DepHigh = 0;
-int WitLow = 0;
-int WitHigh = 0;
-int TransLow = 0;
-int TransHigh = 0;
-DepLow = input.nextInt();
-System.out.println("Welcome to the bank line simulation!");
-System.out.println("We must first begin by establishing the low"
-+ "and high limits of each transaction type.");
-System.out.println("What is the least amount of time a "
-+ "deposit takes?");
-DepLow = input.nextInt();
-System.out.println("What is the most amount of time a "
-+ "deposity takes?");
-DepHigh = input.nextInt();
-System.out.println("What is the least amount of time a "
-+ "withdrawl takes?");
-WitLow = input.nextInt();
-System.out.println("What is the most amount of time a "
-+ "withdrawl takes?");
-WitHigh = input.nextInt();
-System.out.println("What is the least amount of time a "
-+ "money transfer takes?");
-TransLow = input.nextInt();
-System.out.println("What is the most amount of time a "
-+ "money transfer takes?");
-TransHigh = input.nextInt();
-*/
-        //System.out.println("Deposit high bound is " + Random.DepHigh);
-        //System.out.println("Please enter the type of transaction");
-        
-        //String entry;
-        //entry = input.nextLine();
-
-
-
-/*//Remove customers who are done
-if(TellerWindow.isEmpty() == false){
-for(int i=0; i<TellerWindow.size(); i++){
-CustomerItem person = TellerWindow.get(i);
-if(TellerWindow.isEmpty() == false &&
-TellerWindow.get(i).TimeNeeded == 0){
-System.out.println("Done with " +
-TellerWindow.get(i).TransType +
-" of length " +
-TellerWindow.get(i).OrigTimeNeeded +
-" at time " + x);
-FinishedTime.add(x-TellerWindow.get(i).StartTime);
-TellerWindow.remove(i);
-i=0;
-TellerOpen++;
-}
-}
-} */
