@@ -9,9 +9,7 @@ import java.util.Scanner;
  */
 public class BankSim {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
 
         AllRandoms Random = new AllRandoms();
@@ -45,7 +43,7 @@ public class BankSim {
         System.out.println("Running the simulation....");
         int TellerOpen = Random.TellerNum;
 
-        //CustomerItem[ ] ExperimentalTeller = new CustomerItem[TellerOpen];
+        
         int x = 0;
 
         //START OF THE SIMULATION
@@ -67,21 +65,20 @@ public class BankSim {
 
             //Remove customers who are done and open that teller
             if (TellerWindow.isEmpty() == false) {
-                for (int i = 0; i < TellerWindow.size(); i++) {
-                    CustomerItem person = TellerWindow.get(i);
+                for (CustomerItem person : TellerWindow) {
+                    
                     if (person.TimeNeeded == 0) {
-                        int TimeSpent = x - TellerWindow.get(i).StartTime;
+                        int TimeSpent = x - person.StartTime;
                         System.out.println("Customer "
-                                + TellerWindow.get(i).TransType
+                                + person.TransType
                                 + " of length "
-                                + TellerWindow.get(i).OrigTimeNeeded
+                                + person.OrigTimeNeeded
                                 + " is now done at time " + x
                                 + ", it took "
                                 + TimeSpent + " minutes");
                         //Record how much time it took them
                         FinishedTime.add(TimeSpent);
-                        TellerWindow.remove(i);
-                        i = 0;
+                        TellerWindow.remove(person);                        
                         TellerOpen++;
                     }
                 }
