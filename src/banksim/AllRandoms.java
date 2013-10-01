@@ -68,11 +68,11 @@ public class AllRandoms {
 }
     //Change this to take CustomerNum and StartTime as arguments
     public void GenerateCustomer(int CustomerNum, int StartTime){
-        
-        
+        int num = CustomerNum;
+        int time = StartTime;
       
       //For however many initial customers
-      for(int i=0; i<CustomerNum; i++){
+      for(int i=0; i<num; i++){
         CustomerItem thing = new CustomerItem();
         
         //First decide what kind of customer they are
@@ -84,7 +84,7 @@ public class AllRandoms {
                      thing.TimeNeeded = DepLow + (int)(Math.random() *
                           ((DepHigh - DepLow) + 1));
                      thing.OrigTimeNeeded = thing.TimeNeeded;
-                     thing.StartTime = StartTime;
+                     thing.StartTime = time;
                      Queue.enqueue(thing);
                      
                 }
@@ -93,7 +93,7 @@ public class AllRandoms {
                      thing.TimeNeeded = WitLow + (int)(Math.random() *
                           ((WitHigh - WitLow) + 1));
                      thing.OrigTimeNeeded = thing.TimeNeeded;
-                     thing.StartTime = StartTime;
+                     thing.StartTime = time;
                      Queue.enqueue(thing);
                      
                 }
@@ -102,7 +102,7 @@ public class AllRandoms {
                      thing.TimeNeeded = TransLow + (int)(Math.random() *
                           ((TransHigh - TransLow) + 1));
                      thing.OrigTimeNeeded = thing.TimeNeeded;
-                     thing.StartTime = StartTime;
+                     thing.StartTime = time;
                      Queue.enqueue(thing);
                      
                 }
